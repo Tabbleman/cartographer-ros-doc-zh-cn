@@ -13,12 +13,10 @@
    limitations under the License.
 
 ============================
-Cartographer ROS Integration
+Cartographer ROS 集成
 ============================
 
-`Cartographer`_ is a system that provides real-time simultaneous localization
-and mapping (`SLAM`_) in 2D and 3D across multiple platforms and sensor
-configurations. This project provides Cartographer's ROS integration.
+`Cartographer`_ 是一个系统，它在多个平台和传感器配置中提供2D和3D的实时同时定位与地图构建 (`SLAM`_)。该项目提供了Cartographer的ROS集成。
 
 
 .. toctree::
