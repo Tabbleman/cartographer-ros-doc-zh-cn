@@ -23,70 +23,54 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 
 当前支持以下 `ROS 发行版`_：
 
-* Melodic
-* Noetic
+* Humble
 
-.. _the ones from Cartographer: https://google-cartographer.readthedocs.io/en/latest/#system-requirements
-.. _ROS distributions: http://wiki.ros.org/Distributions
+.. _Cartographer 的要求: https://google-cartographer.readthedocs.io/en/latest/#system-requirements
+.. _ROS 发行版: http://wiki.ros.org/Distributions
 
 构建与安装
 =======================
 
-为了构建 Cartographer ROS，我们推荐使用 `wstool <http://wiki.ros.org/wstool>`_ 和 `rosdep <http://wiki.ros.org/rosdep>`_。为了更快的构建，我们还推荐使用 `Ninja <https://ninja-build.org>`_。
+为了在openEuler上构建 Cartographer ROS，我们推荐使用 `colcon <http://wiki.ros.org/wstool>`_ 和 `rosdep <http://wiki.ros.org/rosdep>`_。为了更快的构建，我们还推荐使用 `Ninja <https://ninja-build.org>`_。
 
-在使用 ROS Noetic 的 Ubuntu Focal 上，使用以下命令安装上述工具：
-
-.. code-block:: bash
-
-    sudo apt-get update
-    sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
-
-在旧版本的发行版上：
+在使用 ROS Humble 的 openEuler 上，使用以下命令安装上述工具：
 
 .. code-block:: bash
 
-    sudo apt-get update
-    sudo apt-get install -y python-wstool python-rosdep ninja-build stow
+    sudo dnf update
+    sudo dnf install -y python3-wstool python3-rosdep ninja-build stow
 
-安装工具后，在 'catkin_ws' 中创建一个新的 cartographer_ros 工作区。
-
-.. code-block:: bash
-
-    mkdir catkin_ws
-    cd catkin_ws
-    wstool init src
-    wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall
-    wstool update -t src
-
-现在你需要安装 cartographer_ros 的依赖项。
-首先，我们使用 ``rosdep`` 来安装所需的软件包。
-如果你在安装 ROS 后已经执行过 'sudo rosdep init' 命令，它将打印一个错误。这个错误可以忽略。
+安装工具后，在 'ros2_ws' 中创建一个新的 cartographer_ros 工作区。
 
 .. code-block:: bash
 
-    sudo rosdep init
-    rosdep update
-    rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+    mkdir -p ros2_ws/src
+    cd ros2_ws/src
+    git clone https://gitee.com/src-openeuler/cartographer_ros.git
+    cd cartographer_ros
+    git checkout humble 
+    tar xf ros-humble-cartographer-ros_2.0.9000.orig.tar.gz
+    tar xf ros-humble-cartographer-ros-msgs_2.0.9000.orig.tar.gz
+    tar xf ros-humble-cartographer-rviz_2.0.9000.orig.tar.gz
 
-Cartographer 使用 `abseil-cpp`_ 库，需要使用这个脚本手动安装：
+现在你需要给 cartographer_ros 打上补丁。
 
 .. code-block:: bash
+    cd ros-humble-cartographer-ros-2.0.9000/
+    patch -p1 < ../cartographer-ros-adapt-glog-0.6.0.patch 
+    patch -p1 < ../cartographer-ros-fix-multiple-definition-error.patch 
+    patch -p1 < ../cartographer-ros-fix-absl.patch 
+    patch -p1 < ../cartographer-ros-fix-link.patch 
 
-    src/cartographer/scripts/install_abseil.sh 
-
-由于版本冲突，你可能需要卸载 ROS 的 abseil-cpp：
-
+还有rviz的补丁
 .. code-block:: bash
-
-   sudo apt-get remove ros-${ROS_DISTRO}-abseil-cpp 
+    cd ../ros-humble-cartographer-rviz-2.0.9000
+    patch -p1 < ../cartographer-rviz-fix-absl.patch 
 
 构建并安装。
 
 .. code-block:: bash
-
-    catkin_make_isolated --install --use-ninja
-
-这将从 master 分支的最新 HEAD 构建 Cartographer。
-如果你想要特定版本，你需要在 cartographer_ros.rosinstall 中更改版本。
+    cd ../../ # 现在你应该在 ros2_ws/下面
+    colcon build # 这将花去非常多的时间，don't panic.
 
 .. _abseil-cpp: https://abseil.io/
