@@ -13,12 +13,12 @@
    limitations under the License.
 
 ==========================
-编译 Cartographer ROS
+在oe2403上编译 Cartographer ROS
 ==========================
 
 系统要求
 ===================
-
+当前默认你已经在x86_64的os2403完成安装了ros2 相关的包。
 Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 
 当前支持以下 `ROS 发行版`_：
@@ -31,14 +31,14 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 构建与安装
 =======================
 
-为了在openEuler上构建 Cartographer ROS，我们推荐使用 `colcon <http://wiki.ros.org/wstool>`_ 和 `rosdep <http://wiki.ros.org/rosdep>`_。为了更快的构建，我们还推荐使用 `Ninja <https://ninja-build.org>`_。
+为了在openEuler上构建 Cartographer ROS，我们推荐使用 `colcon <https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html>`_ 。为了更快的构建，我们还推荐使用 `Ninja <https://ninja-build.org>`_。
 
 在使用 ROS Humble 的 openEuler 上，使用以下命令安装上述工具：
 
 .. code-block:: bash
 
     sudo dnf update
-    sudo dnf install -y python3-wstool python3-rosdep ninja-build stow
+    sudo dnf install python3-colcon-common-extensions python3-rosdep ninja-build
 
 安装工具后，在 'ros2_ws' 中创建一个新的 cartographer_ros 工作区。
 
@@ -70,7 +70,7 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 构建并安装。
 
 .. code-block:: bash
-    cd ../../ # 现在你应该在 ros2_ws/下面
-    colcon build # 这将花去非常多的时间，don't panic.
+    cd ../../       # 现在你应该在 ros2_ws/下面
+    colcon build    # 这将花去非常多的时间，don't panic.
 
 .. _abseil-cpp: https://abseil.io/
