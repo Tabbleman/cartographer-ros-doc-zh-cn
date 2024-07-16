@@ -56,6 +56,7 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 现在你需要给 cartographer_ros 打上补丁。
 
 .. code-block:: bash
+
     cd ros-humble-cartographer-ros-2.0.9000/
     patch -p1 < ../cartographer-ros-adapt-glog-0.6.0.patch 
     patch -p1 < ../cartographer-ros-fix-multiple-definition-error.patch 
@@ -65,12 +66,14 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
 还有rviz的补丁
 
 .. code-block:: bash
+
     cd ../ros-humble-cartographer-rviz-2.0.9000
     patch -p1 < ../cartographer-rviz-fix-absl.patch 
 
 构建并安装。
 
 .. code-block:: bash
+    
     cd ../../       # 现在你应该在 ros2_ws/下面
     colcon build    # 这将花去非常多的时间，don't panic.
 
