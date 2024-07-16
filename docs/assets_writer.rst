@@ -48,7 +48,7 @@ assets writer 使用在 ``.pbstream`` 中找到的轨迹分批运行 ``.bag`` �
 .. code-block:: bash
 
    wget -P ~/Downloads https://storage.googleapis.com/cartographer-public-data/bags/backpack_3d/b3-2016-04-05-14-14-00.bag
-   roslaunch cartographer_ros offline_backpack_3d.launch bag_filenames:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag
+   ros2 launch cartographer_ros offline_backpack_3d.launch bag_filenames:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag
 
 在命令行上查看输出，直到节点终止。
 它将写入 ``b3-2016-04-05-14-14-00.bag.pbstream``，该文件表示 Cartographer 在处理所有数据并完成所有优化后的状态。
@@ -58,11 +58,11 @@ assets writer 使用在 ``.pbstream`` 中找到的轨迹分批运行 ``.bag`` �
 .. code-block:: bash
 
    # 完成第一个轨迹。不会接受进一步的数据。
-   rosservice call /finish_trajectory 0
+   ros2 service call /finish_trajectory 0
 
    # 请求 Cartographer 序列化其当前状态。
    # （按 tab 键快速展开参数语法）
-   rosservice call /write_state "{filename: '${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream', include_unfinished_submaps: "true"}"
+   ros2 service call /write_state "{filename: '${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream', include_unfinished_submaps: "true"}"
 
 一旦你获取了 ``.pbstream`` 文件，就可以使用 3D 背包的 `示例管道`_ 运行 assets writer：
 
@@ -70,7 +70,7 @@ assets writer 使用在 ``.pbstream`` 中找到的轨迹分批运行 ``.bag`` �
 
 .. code-block:: bash
 
-   roslaunch cartographer_ros assets_writer_backpack_3d.launch \
+   ros2 launch cartographer_ros assets_writer_backpack_3d.launch \
       bag_filenames:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag \
       pose_graph_filename:=${HOME}/Downloads/b3-2016-04-05-14-14-00.bag.pbstream
 

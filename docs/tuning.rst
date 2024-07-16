@@ -98,10 +98,10 @@ Cartographer 提供内置的 SLAM 评估工具，这些工具对于测量局部 
 在这种情况下，新参数确实揭示了滑动现象，例如在 `b2-2016-04-05-14-44-52.bag` 的开头，因此我们不得不将 translation_weight 降低到 1e2。
 此设置对于我们想要修复的情况较差，但不再滑动。
 在检查它们之前，我们会归一化所有权重，因为它们只有相对意义。
-本次调优的结果是 PR 428_。
+本次调优的结果是 PR428_。
 通常，始终尝试针对平台进行调优，而不是特定的 bag。
 
-.. _PR 428: https://github.com/cartographer-project/cartographer/pull/428
+.. _PR428: https://github.com/cartographer-project/cartographer/pull/428
 
 特殊情况
 ---------
@@ -120,9 +120,9 @@ Cartographer 提供内置的 SLAM 评估工具，这些工具对于测量局部 
 
 有许多选项可以调优不同组件的速度，我们按推荐的、直接的顺序列出它们到更具侵入性的选项。
 建议一次只探索一个选项，从第一个开始。
-配置参数在 Cartographer 文档_ 中有记录。
+配置参数在 `Cartographer文档`_ 中有记录。
 
-.. _Cartographer 文档: https://google-cartographer.readthedocs.io/en/latest/configuration.html
+.. _Cartographer文档: https://google-cartographer.readthedocs.io/en/latest/configuration.html
 
 为了调优全局 SLAM 以降低延迟，我们减少其计算负载，直到它始终跟上实时输入。
 在此阈值下，我们不再进一步减少，但尝试获得尽可能好的质量。
@@ -188,14 +188,11 @@ Cartographer 提供内置的 SLAM 评估工具，这些工具对于测量局部 
 仍有问题？
 ----------
 
-如果您无法使 Cartographer 在您的数据上可靠地工作，您可以打开 GitHub 问题_ 请求帮助。
-开发人员很乐意提供帮助，但只有在您遵循问题模板_ 并包含 `rosbag_validate` 的结果、您的 cartographer_ros 配置的 fork 链接以及一个 .bag 文件链接以重现您的问题时，他们才能提供帮助。
+cartographer 已经停止维护啦，只能求助身边懂的人了！
 
 .. note::
 
    已经有很多 GitHub 问题，开发人员解决了各种问题。浏览 cartographer_ros_ 和 cartographer_ 的已解决问题是了解 Cartographer 的好方法，或许可以找到您问题的解决方案！
 
-.. _GitHub 问题: https://github.com/cartographer-project/cartographer_ros/issues
-.. _问题模板: https://github.com/cartographer-project/cartographer_ros/issues/new?labels=question
 .. _cartographer_ros 的已解决问题: https://github.com/cartographer-project/cartographer_ros/issues?q=is%3Aissue+is%3Aclosed
 .. _cartographer: https://github.com/cartographer-project/cartographer_ros/issues?q=is%3Aissue+is%3Aclosed

@@ -15,7 +15,7 @@
 .. cartographer SHA: 30f7de1a325d6604c780f2f74d9a345ec369d12d
 .. cartographer_ros SHA: 44459e18102305745c56f92549b87d8e91f434fe
 
-调优算法漫游
+调优算法概览
 =============
 
 Cartographer 是一个复杂的系统，调优它需要对其内部工作原理有很好的理解。
@@ -38,22 +38,22 @@ IEEE，2016。第1271–1278页。
      :target: https://github.com/cartographer-project/cartographer/blob/master/docs/source/high_level_system_overview.png
 
 Cartographer 可以看作是两个独立但相关的子系统。
-第一个是 **本地 SLAM**（有时也称为 **前端** 或本地轨迹生成器）。
+第一个是 **本地SLAM**（有时也称为 **前端** 或本地轨迹生成器）。
 它的工作是构建一系列 **子地图**。
 每个子地图旨在局部一致，但我们接受本地 SLAM 随时间漂移。
-大多数本地 SLAM 选项可以在 `install_isolated/share/cartographer/configuration_files/trajectory_builder_2d.lua`_ 中找到用于2D，`install_isolated/share/cartographer/configuration_files/trajectory_builder_3d.lua`_ 中找到用于3D。 （在本页的其余部分，我们将 `TRAJECTORY_BUILDER_nD` 用于通用选项）
+大多数本地 SLAM 选项可以在 `install/share/cartographer/configuration_files/trajectory_builder_2d.lua`_ 中找到用于2D，`install/share/cartographer/configuration_files/trajectory_builder_3d.lua`_ 中找到用于3D。 （在本页的其余部分，我们将 `TRAJECTORY_BUILDER_nD` 用于通用选项）
 
-.. _install_isolated/share/cartographer/configuration_files/trajectory_builder_2d.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/trajectory_builder_2d.lua
-.. _install_isolated/share/cartographer/configuration_files/trajectory_builder_3d.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/trajectory_builder_3d.lua
+.. _install/share/cartographer/configuration_files/trajectory_builder_2d.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/trajectory_builder_2d.lua
+.. _install/share/cartographer/configuration_files/trajectory_builder_3d.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/trajectory_builder_3d.lua
 
-另一个子系统是 **全局 SLAM**（有时称为 **后端**）。
+另一个子系统是 **全局SLAM**（有时称为 **后端**）。
 它在后台线程中运行，主要任务是找到 **闭环约束**。
 它通过扫描匹配 **扫描**（在 **节点** 中收集）与子地图来实现这一点。
 它还结合其他传感器数据以获得更高层次的视图，并识别最一致的全局解决方案。
 在3D中，它还尝试找到重力方向。
-大多数选项可以在 `install_isolated/share/cartographer/configuration_files/pose_graph.lua`_ 中找到
+大多数选项可以在 `install/share/cartographer/configuration_files/pose_graph.lua`_ 中找到
 
-.. _install_isolated/share/cartographer/configuration_files/pose_graph.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/pose_graph.lua
+.. _install/share/cartographer/configuration_files/pose_graph.lua: https://github.com/cartographer-project/cartographer/blob/df337194e21f98f8c7b0b88dab33f878066d4b56/configuration_files/pose_graph.lua
 
 从更高的抽象层次来看，本地 SLAM 的工作是生成好的子地图，而全局 SLAM 的工作是将它们最一致地联系在一起。
 

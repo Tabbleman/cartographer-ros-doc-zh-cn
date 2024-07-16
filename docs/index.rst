@@ -13,7 +13,7 @@
    limitations under the License.
 
 ============================
-Cartographer on ros2 
+Cartographer on OE ros2 
 ============================
 
 `Cartographer`_ 是一个系统，它在多个平台和传感器配置中提供2D和3D的实时同时定位与地图构建 (`SLAM`_)。该项目提供了Cartographer的ROS集成。
@@ -29,10 +29,8 @@ Cartographer on ros2
    tuning
    assets_writer
    going_further
-   getting_involved
    configuration
    ros_api
-   data
    faq
 
 .. _Cartographer: https://github.com/cartographer-project/cartographer

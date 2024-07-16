@@ -22,21 +22,21 @@ Cartographer不仅是一个优秀的SLAM算法，它还附带了一个功能齐�
 更多输入
 ==========
 
-如果你有一个发布在``nav_msgs/Odometry``主题上的里程计（例如轮式编码器）并希望使用它来提高Cartographer的定位，可以在你的``.lua``配置文件中添加输入：
+如果你有一个发布在 ``nav_msgs/Odometry``主题上的里程计（例如轮式编码器）并希望使用它来提高Cartographer的定位，可以在你的``.lua``配置文件中添加输入：
 
 ..  code-block:: lua
 
     use_odometry = true
 
-消息将会在``odom``主题上被接收。
+消息将会在 ``odom``主题上被接收。
 
-发布在名为``fix``的``sensor_msgs/NavSatFix``主题上的GPS可以提高全局SLAM的效果：
+发布在名为 ``fix``的 ``sensor_msgs/NavSatFix``主题上的GPS可以提高全局SLAM的效果：
 
 ..  code-block:: lua
 
     use_nav_sat = true
 
-对于发布在名为``landmark``的``cartographer_ros_msgs/LandmarkList``（`在cartographer_ros中定义的消息`_）主题上的地标：
+对于发布在名为 ``landmark``的 ``cartographer_ros_msgs/LandmarkList``（`在cartographer_ros中定义的消息`_）主题上的地标：
 
 ..  code-block:: lua
 
@@ -48,7 +48,7 @@ Cartographer不仅是一个优秀的SLAM算法，它还附带了一个功能齐�
 =================
 
 如果你有一个满意的地图并希望减少计算量，可以使用Cartographer的仅定位模式，该模式将在现有地图上运行SLAM而不构建新地图。
-通过在运行``cartographer_node``时使用``-load_state_filename``参数，并在你的lua配置中定义以下行来启用此模式：
+通过在运行 ``cartographer_node``时使用 ``-load_state_filename``参数，并在你的lua配置中定义以下行来启用此模式：
 
 ..  code-block:: lua
 
@@ -68,7 +68,7 @@ IMU校准
 
 Cartographer可以从多个并行发出数据的机器人执行SLAM。
 全局SLAM能够检测共享路径，并在可能时合并由不同机器人构建的地图。
-这是通过使用两个ROS服务``start_trajectory``和``finish_trajectory``实现的。（有关其使用的详细信息，请参阅ROS API参考文档）
+这是通过使用两个ROS服务 ``start_trajectory``和 ``finish_trajectory``实现的。（有关其使用的详细信息，请参阅ROS API参考文档）
 
 使用gRPC进行云集成
 ===========================
