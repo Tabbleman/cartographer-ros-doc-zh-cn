@@ -63,6 +63,7 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
     patch -p1 < ../cartographer-ros-fix-link.patch 
 
 还有rviz的补丁
+
 .. code-block:: bash
     cd ../ros-humble-cartographer-rviz-2.0.9000
     patch -p1 < ../cartographer-rviz-fix-absl.patch 
