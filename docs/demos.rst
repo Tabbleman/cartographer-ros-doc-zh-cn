@@ -16,9 +16,8 @@
 在示例包上运行Cartographer ROS
 ======================================
 
-现在Cartographer和Cartographer的ROS集成已经安装，你可以下载示例包（例如2D和3D背包采集的 `德意志博物馆 <https://en.wikipedia.org/wiki/Deutsches_Museum>`_）到已知位置，在此例中是 ``~/Downloads`` ，然后使用 ``ros2 launch`` 启动演示。
-
-启动文件会自动启动 ``roscore``和 ``rviz``。
+现在Cartographer和Cartographer的ROS集成已经安装，你可以下载示例包（例如2D和3D背包采集的 `德意志博物馆 <https://en.wikipedia.org/wiki/Deutsches_Museum>`_）到已知位置，在此例中是 ``~/Downloads`` 
+，然后使用 ``ros2 launch`` 启动演示。
 
 .. warning:: 当你想运行cartographer_ros时，你可能需要先通过运行 ``source install/setup.bash`` 来配置你的ROS环境（如果你的shell是zsh则替换为zsh）。
 

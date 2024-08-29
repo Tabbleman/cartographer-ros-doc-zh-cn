@@ -61,7 +61,6 @@ Cartographer ROS 的要求与 `Cartographer 的要求`_ 相同。
     patch -p1 < ../cartographer-ros-adapt-glog-0.6.0.patch 
     patch -p1 < ../cartographer-ros-fix-multiple-definition-error.patch 
     patch -p1 < ../cartographer-ros-fix-absl.patch 
-    patch -p1 < ../cartographer-ros-fix-link.patch 
 
 还有rviz的补丁
 

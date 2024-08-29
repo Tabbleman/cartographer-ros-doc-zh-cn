@@ -23,8 +23,6 @@ Cartographer on OE ros2
    :maxdepth: 2
 
    compilation
-   demos
-   your_bag
    algo_walkthrough
    tuning
    assets_writer
